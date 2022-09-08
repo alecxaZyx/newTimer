@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#56C596"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+
+        android:id="@+id/StudyTimerMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <!-- activity title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Study Timer"
+            android:textColor="#ffffff"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <!-- countdown timer picker using number picker -->
+        <LinearLayout
+            android:id="@+id/section_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:fontFamily="@font/raleway_bold"
+                android:text="HRS"
+                android:textColor="#ffffff"
+                android:textSize="25sp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/raleway_bold"
+                android:text="MINS"
+                android:textColor="#ffffff"
+                android:textSize="25sp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:fontFamily="@font/raleway_bold"
+                android:text="SECS"
+                android:textColor="#ffffff"
+                android:textSize="25sp"></TextView>
+        </LinearLayout>
+
+        <!-- horizontal layout for number pickers -->
+        <LinearLayout
+            android:id="@+id/numpick_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/section_time"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <NumberPicker
+                android:id="@+id/numPickerHrs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:theme="@style/numPickerStyle" />
+
+            <NumberPicker
+                android:id="@+id/numPickerMins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="30dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:theme="@style/numPickerStyle" />
+
+            <NumberPicker
+                android:id="@+id/numPickerSec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:theme="@style/numPickerStyle" />
+        </LinearLayout>
+
+        <!-- add preset -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/numpick_layout"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="-1dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <!-- lay out for timer name -->
+                <LinearLayout
+                    android:id="@+id/timerNameSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/numpick_layout"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:background="#205072"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Timer Name"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"></TextView>
+
+                    <EditText
+                        android:id="@+id/TimerNameTxt"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_margin="15dp"
+                        android:fontFamily="@font/raleway_regular"
+                        android:hint="Enter timer name..."
+                        android:textColor="#ffffff"
+                        android:textColorHint="#d9d9d9"
+                        android:textSize="20sp"></EditText>
+
+                </LinearLayout>
+                <!-- timer preset -->
+                <RelativeLayout
+                    android:id="@+id/presetSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/timerNameSection"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Timer Presets"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"></TextView>
+
+                    <TextView
+                        android:id="@+id/addPresetBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="25dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:includeFontPadding="false"
+                        android:text="ADD"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"></TextView>
+                </RelativeLayout>
+
+                <GridView
+                    android:id="@+id/presetGView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/presetSection"
+                    android:layout_margin="18dp"
+                    android:columnWidth="140dp"
+                    android:gravity="center"
+                    android:horizontalSpacing="15dp"
+                    android:numColumns="auto_fit"
+                    android:verticalSpacing="15dp"></GridView>
+                <!-- timer start button -->
+                <Button
+                    android:id="@+id/StartBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/presetGView"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/button_1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="START"
+                    android:textSize="30sp"
+                    app:backgroundTint="#205072" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- add preset layout-->
+        <RelativeLayout
+            android:id="@+id/addPreset_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/presetBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:includeFontPadding="false"
+                        android:text="x"
+                        android:textColor="#205072"
+                        android:textSize="20sp"></TextView>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Add new timer preset"
+                    android:textColor="#205072"
+                    android:textSize="15sp"></TextView>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="HRS"
+                        android:textColor="#205072"
+                        android:textSize="15sp"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="MINS"
+                        android:textColor="#205072"
+                        android:textSize="15sp"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="SECS"
+                        android:textColor="#205072"
+                        android:textSize="15sp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <NumberPicker
+                        android:id="@+id/prePrickerHrs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
+                        android:theme="@style/numPickerStyle2" />
+
+                    <NumberPicker
+                        android:id="@+id/prePickerMins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
+                        android:theme="@style/numPickerStyle2" />
+
+                    <NumberPicker
+                        android:id="@+id/prePickerSec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
+                        android:theme="@style/numPickerStyle2" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/addPreTimeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="ADD"
+                    android:textSize="18sp"
+                    app:backgroundTint="#205072" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <!-- View Countdown timer (invisible layout) -->
+    <RelativeLayout
+        android:id="@+id/CountdownViewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#205072"
+            android:orientation="vertical"
+            android:padding="70dp"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/raleway_bold"
+                android:text="Timer Countdown"
+                android:textColor="#ffffff"
+                android:textSize="25sp"></TextView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/CDViewHrs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:fontFamily="@font/raleway_regular"
+                    android:text="00"
+                    android:textColor="#ffffff"
+                    android:textSize="40sp"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" : "
+                    android:textColor="#ffffff"
+                    android:textSize="40sp"></TextView>
+
+                <TextView
+                    android:id="@+id/CDViewMins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:fontFamily="@font/raleway_regular"
+                    android:text="00"
+                    android:textColor="#ffffff"
+                    android:textSize="40sp"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" : "
+                    android:textColor="#ffffff"
+                    android:textSize="40sp"></TextView>
+
+                <TextView
+                    android:id="@+id/CDViewSecs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:fontFamily="@font/raleway_regular"
+                    android:text="00"
+                    android:textColor="#ffffff"
+                    android:textSize="40sp"></TextView>
+
+            </LinearLayout>
+
+            <!-- stop and reset buttons -->
+            <Button
+                android:id="@+id/StopBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/button_1"
+                android:fontFamily="@font/raleway_bold"
+                android:text="STOP"
+                android:textSize="25sp"
+                app:backgroundTint="#56C596" />
+
+            <Button
+                android:id="@+id/ResetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_1"
+                android:fontFamily="@font/raleway_bold"
+                android:text="RESET"
+                android:textSize="25sp"
+                app:backgroundTint="#56C596" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
